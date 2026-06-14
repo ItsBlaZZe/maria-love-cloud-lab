@@ -97,26 +97,14 @@ resource "azurerm_container_app" "app" {
     }
   }
 
-  depends_on = [azurerm_role_assignment.container_app_acr_pull]
+  depends_on = [
+    azurerm_role_assignment.container_app_acr_pull
+  ]
 }
 
 resource "azurerm_monitor_diagnostic_setting" "acr" {
   name                       = "diag-${local.name_prefix}-acr"
   target_resource_id         = azurerm_container_registry.app.id
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.app.id
-
-  enabled_log {
-    category_group = "allLogs"
-  }
-
-  enabled_metric {
-    category = "AllMetrics"
-  }
-}
-
-resource "azurerm_monitor_diagnostic_setting" "container_app" {
-  name                       = "diag-${local.name_prefix}-aca"
-  target_resource_id         = azurerm_container_app.app.id
   log_analytics_workspace_id = azurerm_log_analytics_workspace.app.id
 
   enabled_log {
