@@ -2,7 +2,7 @@
 
 Maria Love Cloud Lab is a small React application and DevOps practice repository built around a personal, wholesome love-messages app for Maria.
 
-The project exists to practice an interview-friendly cloud delivery flow: local React development, Docker/Nginx packaging, GitHub Actions quality gates, Docker image publishing to Azure Container Registry, and Terraform-managed Azure Container Apps infrastructure.
+The project exists to practice a cloud delivery flow: local React development, Docker/Nginx packaging, GitHub Actions quality gates, Docker image publishing to Azure Container Registry, and Terraform-managed Azure Container Apps infrastructure.
 
 ## Tech Stack
 
