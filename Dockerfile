@@ -1,0 +1,18 @@
+FROM node:lts-alpine AS build
+
+WORKDIR /app
+
+COPY app/package*.json ./
+RUN npm ci
+
+COPY app/ ./
+RUN npm run build
+
+FROM nginx:stable-alpine AS runtime
+
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
